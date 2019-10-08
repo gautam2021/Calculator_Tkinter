@@ -7,7 +7,7 @@ blank_space=' '
 root.iconbitmap('title.ico')
 root.geometry('300x300+800+200')
 root.title(20*blank_space+"Calculator")
-root.resizable(0,0)
+root.resizable(0,0)    # can't change the size of main window
 
 
 # all functions are going to be declared here which was called by command ,
@@ -32,14 +32,14 @@ def enter_number(x):
 
 
 result=0
-history=[]
+history=[]    # we will store the last few calculation 
 def equal_btn():
     content=entry_box.get()
     result=eval(content)
     entry_box.delete(0,END)
     entry_box.insert(0,result)
     history.append(content)
-    history.reverse()
+    history.reverse()  
 
     status.configure(text='History ' + '| '.join(history[:4]) ,bg='#5c94bd',font='verdana 10 bold')
 
@@ -141,7 +141,7 @@ zero_btn.place(x=0,y=160)
 
 equal_btn=Button(width=5,font='times 20 bold ',fg='red',bg='#ffffff',text='=',relief=FLAT,bd=0,command=equal_btn)
 equal_btn.place(x=67,y=160)
-# 67 160
+
 
 
 dot_btn=Button(width=5,font='times 20 bold',fg='red',bg='#ffffff',text='.',relief=FLAT,bd=0,command=lambda x='.':enter_number(x))
@@ -154,7 +154,7 @@ time_btn.place(x=0,y=200)
 
 clear_btn=Button(width=5,font='times 20 ',bg='#ffffff',fg='red',text='C',relief=FLAT,bd=0,command=clear_btn)
 clear_btn.place(x=67,y=200)
-# 67 200
+
 
 del_btn=Button(width=5,font='times 20 ',bg='#ffffff',fg='red',text='Del',relief=FLAT,bd=0,command=delete_btn)
 del_btn.place(x=134,y=200)
